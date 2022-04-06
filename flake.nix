@@ -23,7 +23,7 @@
             src = packageFiles;
             buildCommand = ''
               mkdir $out
-              ${node2nix}/bin/node2nix -d -i $src/package.json -l $src/package-lock.json --node-env $out/node-env.nix --output $out/node-packages.nix
+              ${node2nix}/bin/node2nix -d -i $src/package.json -l $src/package-lock.json --node-env $out/node-env.nix --output $out/node-packages.nix --use-fetchgit-private
             '';
           };
 
