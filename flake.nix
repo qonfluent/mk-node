@@ -43,7 +43,7 @@
             dontNpmInstall = true;
             # https://github.com/svanderburg/node2nix/issues/275
             buildInputs =
-              if fixNodeGyp then [ prev.nodePackages.node-gyp-build ] else [ ];
+              (if fixNodeGyp then [ prev.nodePackages.node-gyp-build ] else [ ]) ++ [ git ];
             preRebuild = prev.lib.optionalString fixNodeGyp ''
               sed -i -e "s|#!/usr/bin/env node|#! ${nodejs}/bin/node|" node_modules/node-gyp-build/bin.js
             '';
